@@ -1,0 +1,76 @@
+function Callback_Table_STSelectionPanel_O(src, evnt)
+
+gFig = ancestor(src, 'Figure');
+gData = guidata(gFig);
+
+
+OT = gData.OT;
+% OData = OT.Data;
+% SN = OData(:, 2);
+% idx_old = find(cellfun(@(x) all(x),SN))
+% if ~isempty(idx_old)
+%         gData.OT.Data{idx_old, 2} = false;
+% end
+
+idx_new = evnt.Indices(1)
+
+    jScroll = findjobj(gData.OT);
+jTable = jScroll.getViewport.getView;
+jTable.setAutoResizeMode(jTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+
+jUTable.changeSelection(1,2, true, false);
+
+% gData.OT.Data{idx_new, 2} = true;
+
+% 
+% gData.OT.Data{} = OData;
+% 
+% drawnow
+
+% if ~isempty(idcs)
+%     oldIdx = selected.idxSS;
+%     newIdx = idcs(1);
+%     selected.idxSS = newIdx;
+%     src.Data{newIdx, 1} = true;
+% %     if idcs(1) == selected.idxSS
+% %         set(data_main.hPlotObj.SS.z, 'visible', 'off')
+% %         set(data_main.hPlotObj.SS.x, 'visible', 'off')
+% %         set(data_main.hPlotObj.SS.y, 'visible', 'off')
+% %     else
+% 
+%     if newIdx ~= oldIdx
+%         src.Data{oldIdx, 1} = false;
+% %         selected.idxSS = idcs(1);
+% %         src.Data{selected.idxSS, 1} = true; 
+% 
+%         data_main.selected = selected;
+%         guidata(hFig_main, data_main);
+% 
+%         set(data_main.hPlotObj.SS.z, 'visible', 'on')
+%         set(data_main.hPlotObj.SS.x, 'visible', 'on')
+%         set(data_main.hPlotObj.SS.y, 'visible', 'on')
+% 
+%         updateSS(hFig_main, '1', selected.iSlice.z);
+%         updateSS(hFig_main, '2', selected.iSlice.x);
+%         updateSS(hFig_main, '3', selected.iSlice.y);
+% 
+%         if strcmp(data_main.hMenuItem.AnalysisZ.Checked, 'on')
+%             data_main = guidata(hFig_main);
+%             updatePDF_zTime(data_main);
+%             updateStat_zTime2d(data_main);
+%             initializeStat_zTime3d(data_main);
+%             updateStat_zTime3d(data_main);
+%         elseif strcmp(data_main.hMenuItem.AnalysisZ_CBCT.Checked, 'on')
+%             updatePDF_CBCT_zTime(data_main);            
+%         end
+% 
+%         set(data_main.hMenuItem.jhZ, 'Checked', 'off')
+%         set(data_main.hMenuItem.miZ, 'Checked', 'off')
+%         for iSub = 1:4
+%             set(data_main.hPlotObj.jhSub(iSub), 'CData', []); 
+%         end
+%         set(data_main.hPlotObj.Stat_zTime2d(7), 'xdata', [], 'ydata', [])
+%         set(data_main.hPlotObj.StatSub_zTime2d(7), 'xdata', [], 'ydata', [])
+% 
+%     end
+% end
